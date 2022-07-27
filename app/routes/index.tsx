@@ -4,7 +4,7 @@ import {
   LoaderFunction,
   redirect,
 } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useActionData, useLoaderData } from "@remix-run/react";
 import { createPost, getPosts } from "~/services/post.server";
 import type { Post } from "~/services/post.server";
 import { Post as PostComponent } from "~/components/Post";
@@ -62,10 +62,15 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { posts } = useLoaderData<LoaderData>();
+  const formData = useActionData<ActionData>();
   return (
     <div>
       <h1>Welcome to Remix</h1>
-      <PostForm action="/?index" />
+      <PostForm
+        action="/?index"
+        error={formData?.error}
+        fields={formData?.fields}
+      />
       <ul>
         {posts.map((post) => (
           <li key={post.title}>
