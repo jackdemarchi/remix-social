@@ -1,6 +1,4 @@
 import { Form } from "@remix-run/react";
-import { Children } from "react";
-import { Button } from "../Button";
 import type { Props } from "./types";
 
 function UserForm({
@@ -25,7 +23,7 @@ function UserForm({
           required
         />
         {error?.fieldErrors?.email && (
-          <p className="text-red-500">{error?.fieldErrors?.email}</p>
+          <p className="text-red-500">{error?.fieldErrors?.email?.[0]}</p>
         )}
       </div>
       <div className="flex flex-col gap-2">
@@ -44,7 +42,7 @@ function UserForm({
           <p className="text-red-500">{error?.fieldErrors?.password}</p>
         )}
       </div>
-      {Children}
+      {children}
       {error?.formError && <p className="text-red-500">{error?.formError}</p>}
     </Form>
   );

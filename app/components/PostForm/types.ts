@@ -12,4 +12,5 @@ export type Props = ComponentPropsWithoutRef<"form"> & {
     title?: string;
     body?: string;
   };
+  authorId: string;
 };

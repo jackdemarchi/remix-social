@@ -4,7 +4,7 @@ import { Nav } from "~/components/Nav";
 import { authenticator, SessionUser } from "~/services/auth.server";
 
 type LoaderData = {
-  user: SessionUser;
+  user: SessionUser | null;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -14,9 +14,17 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function App() {
   const { user } = useLoaderData<LoaderData>();
+  let enhancedUser =
+    user == null
+      ? undefined
+      : {
+          ...user,
+          createdAt: new Date(user.createdAt),
+          updatedAt: new Date(user.updatedAt),
+        };
   return (
     <div className="max-w-6xl mx-4 md:mx-10">
-      <Nav user={user} />
+      <Nav user={enhancedUser} />
       <Outlet />
     </div>
   );

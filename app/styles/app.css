@@ -569,6 +569,10 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -585,12 +589,12 @@ video {
   margin-bottom: 2rem;
 }
 
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .max-w-6xl {

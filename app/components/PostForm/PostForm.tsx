@@ -1,10 +1,17 @@
 import { Button } from "../Button";
-import { Props } from "./types";
+import type { Props } from "./types";
 
-function PostForm({ error, fields, method = "post", ...props }: Props) {
+function PostForm({
+  error,
+  fields,
+  authorId,
+  method = "post",
+  ...props
+}: Props) {
   return (
-    <form method={method} {...props} className="flex flex-col gap-4 pl-4">
-      <div className=" flex flex-col">
+    <form className="flex flex-col gap-4" method={method} {...props}>
+      <input className="hidden" defaultValue={authorId} name="authorId" />
+      <div className="flex flex-col">
         <label htmlFor="title" className="mb-2 text-gray-600">
           Title
         </label>
@@ -33,9 +40,7 @@ function PostForm({ error, fields, method = "post", ...props }: Props) {
         )}
       </div>
       {error?.formError && <p className="text-red-500">{error.formError}</p>}
-      <Button type="submit" className="border border-blue-500">
-        Create Post
-      </Button>
+      <Button type="submit">Create Post</Button>
     </form>
   );
 }
