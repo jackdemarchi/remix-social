@@ -65,7 +65,7 @@ export default function Index() {
   const formData = useActionData<ActionData>();
   return (
     <div>
-      <h1>Welcome to Remix</h1>
+      <h1 className="text-xl font-bold">Remix Social</h1>
       <PostForm
         action="/?index"
         error={formData?.error}
