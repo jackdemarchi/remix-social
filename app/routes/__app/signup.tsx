@@ -2,7 +2,7 @@ import { ActionFunction, json, redirect } from "@remix-run/node";
 import { useActionData, useTransition } from "@remix-run/react";
 import { Button } from "~/components/Button";
 import { UserForm } from "~/components/UserForm";
-import { checkUserExists, userSignup } from "~/services/user.server";
+import { checkUserExists, userSignup } from "~/services/users.server";
 import { Signup } from "~/services/validations";
 
 export function badRequest<TActionData>(data: TActionData, status = 400) {

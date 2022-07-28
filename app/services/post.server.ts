@@ -1,6 +1,6 @@
-import type { Post } from "@prisma/client";
+import type { Post, Prisma } from "@prisma/client";
 import { db } from "~/services/db.server";
-export type { Post } from "@prisma/client";
+export type { Post };
 
 export const getPosts = () =>
   db.post.findMany({

@@ -12,9 +12,7 @@ const { getSession, commitSession, destroySession } =
         process.env.NODE_ENV === "production"
           ? "remix-social-omega.vercel.app"
           : undefined,
-      // Expires can also be set (although maxAge overrides it when used in combination).
-      // Note that this method is NOT recommended as `new Date` creates only one date on each server deployment, not a dynamic date in the future!
-      //
+
       expires: new Date(Date.now() + 60_00000),
       httpOnly: true,
       maxAge: 60_000000,

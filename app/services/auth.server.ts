@@ -6,7 +6,7 @@ import {
   destroySession,
   getSession,
 } from "~/services/session.server";
-import { userLogin } from "~/services/users.server";
+import { userLogin } from "./users.server";
 import { Login } from "./validations";
 
 export type SessionUser = Omit<User, "hashedPassword">;
@@ -18,7 +18,7 @@ export const authenticator = new Authenticator<SessionUser>({
 
 export const USER_LOGIN = "user-login";
 authenticator.use(
-  new FormStrategy(async ({ form, context }) => {
+  new FormStrategy(async ({ form }) => {
     const rawEmail = form.get("email");
     const rawPassword = form.get("password");
 
@@ -27,9 +27,7 @@ authenticator.use(
       password: rawPassword,
     });
 
-    console.log("parsed data");
     const user = await userLogin(email, password);
-    console.log("logged user in", { user });
     return user;
   }),
   USER_LOGIN
