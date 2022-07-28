@@ -18,8 +18,8 @@ model Post {
   updatedAt DateTime @updatedAt
   title     String?
   body      String
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String?
 }
 
 model User {

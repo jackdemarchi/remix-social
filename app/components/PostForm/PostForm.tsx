@@ -1,8 +1,9 @@
+import { Button } from "../Button";
 import { Props } from "./types";
 
 function PostForm({ error, fields, method = "post", ...props }: Props) {
   return (
-    <form method={method} {...props} className="flex flex-col gap-4">
+    <form method={method} {...props} className="flex flex-col gap-4 pl-4">
       <div className=" flex flex-col">
         <label htmlFor="title" className="mb-2 text-gray-600">
           Title
@@ -32,12 +33,9 @@ function PostForm({ error, fields, method = "post", ...props }: Props) {
         )}
       </div>
       {error?.formError && <p className="text-red-500">{error.formError}</p>}
-      <button
-        type="submit"
-        className="transition rounded text-blue-700 font-bold py-4 px-6 transparent hover:bg-gray-100"
-      >
+      <Button type="submit" className="border border-blue-500">
         Create Post
-      </button>
+      </Button>
     </form>
   );
 }
